@@ -1,48 +1,50 @@
 # import libraries
-import os
-from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.common.by import By
-from selenium.webdriver.chrome.service import Service
-from webdriver_manager.chrome import ChromeDriverManager
-from getpass import getpass
-from time import sleep
-import numpy as np
+import functions as tw
 
-import keypair
-
-user = keypair.user
-pasw = keypair.pasw
+blacklist = []
 
 # open chrome driver
-driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
-driver.get('https://www.twitter.com/i/flow/login')
-
-user_in = driver.find_element(by=By.TAG_NAME, value='input')
-user_in.send_keys(user)
-user_in.send_keys(Keys.ENTER)
-
-pasw_in = driver.find_element(by=By.NAME, value='password')
-pasw_in.send_keys(pasw)
-pasw_in.send_keys(Keys.ENTER)
-
-driver.refresh()
 
 
-tweets = driver.find_elements(by=By.TAG_NAME, value='article')
-test = tweets[0].find_elements(by=By.TAG_NAME, value='svg')[3].click()
 
-reply_in = driver.find_element(by=By.CLASS_NAME, value='public-DraftStyleDefault-block')
-reply_in.send_keys ('gm')
 
-divs = driver.find_elements(by=By.TAG_NAME, value='div')
 
-for div in divs:
-  div.submit()
+tw.log_in()
 
-driver.send_keys('test')
+tw.driver.refresh()
+
+tweets = tw.driver.find_elements(by=tw.By.TAG_NAME, value='article')
+tw.sleep(2)
+
+
 for tweet in tweets:
-  reply_in = tweet.find_elements(by=By.TAG_NAME, value='svg')[3].click()
+  user = tweet.find_elements(by=tw.By.TAG_NAME, value='span')[0].text
+  if user in blacklist:
+    continue
+
+  mess = tweet.find_elements(by=By.TAG_NAME, value='span')[4].text
+  print(mess)
+  
+  sleep(1)
+  if 'gm' in mess:   
+    tweets[0].find_elements(by=By.TAG_NAME, value='svg')[5].click() # like click
+    sleep(1)
+    tweets[0].find_elements(by=By.TAG_NAME, value='svg')[3].click() # comment click
+    sleep(1)
+    reply_in = driver.find_element(by=By.CLASS_NAME, value='public-DraftStyleDefault-block')
+    reply_in.send_keys ('gm')
+    reply_in.send_keys (Keys.ENTER)
+  else:
+    continue
+
+  input('continue?')
+
+
+
+
+
+
+
 
 
 like = driver.find_element(by=By.ID, value='id__rjm2ynw6cy')
