@@ -5,11 +5,13 @@ prompts = [
     'Talk about Solana',
     'Talk about economy',
     'Talk about metaverse',
-    'Talk about Bitcoin'
+    'Talk about Bitcoin',
+    'Say good morning'
 
 ]
 images = [
-    'Nature',
-    'City',
-    'Universe'
+    'Bitcoin',
+    'Ethereum',
+    'Solana',
+    'Polygon'
 ]
