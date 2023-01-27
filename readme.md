@@ -1,9 +1,13 @@
-# How to grow followers in twitter:
+# twitter-gm
 
-1. Share relevant and useful content.
-2. Post visual content.
-3. Tweet consistently.
-4. Interact with others.
-5. Promote your @name everywhere you can.
-6. Tap into your existing customer base.
-7. Run a followers campaign.
+# to run the bot
+
+> > python run.py
+
+# also you can
+
+> > python createTweet.py
+
+You can modify prompts.py
+
+Updates soon
