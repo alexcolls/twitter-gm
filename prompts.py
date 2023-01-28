@@ -6,8 +6,7 @@ prompts = [
     'Talk about economy',
     'Talk about metaverse',
     'Talk about Bitcoin',
-    'Say good morning'
-
+    'Say good morning',
 ]
 images = [
     'Bitcoin',

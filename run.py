@@ -1,27 +1,7 @@
-from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.common.by import By
-from selenium.webdriver.chrome.service import Service
-from webdriver_manager.chrome import ChromeDriverManager
 from time import sleep
 from random import randint
-
-from key import key
-
-driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
-
-
-def log_in(user=key.user, pasw=key.pasw):
-    driver.get('https://www.twitter.com/i/flow/login')
-    sleep(2)
-    user_in = driver.find_element(by=By.TAG_NAME, value='input')
-    user_in.send_keys(user)
-    user_in.send_keys(Keys.ENTER)
-    sleep(2)
-    pasw_in = driver.find_element(by=By.NAME, value='password')
-    pasw_in.send_keys(pasw)
-    pasw_in.send_keys(Keys.ENTER)
-
+from chromeDriver import driver, keys, by
+from login import log_in
 
 log_in()
 sleep(3)
@@ -58,21 +38,21 @@ while True:
     try:
         driver.refresh()
         sleep(5)
-        tweets = driver.find_elements(by=By.TAG_NAME, value='article')
+        tweets = driver.find_elements(by=by.TAG_NAME, value='article')
         tweet = tweets[3]
-        svgs = tweet.find_elements(by=By.TAG_NAME, value='svg')
+        svgs = tweet.find_elements(by=by.TAG_NAME, value='svg')
         svgs[3].click()  # like
         svgs[1].click()  # comment
         sleep(5)
         reply_in = driver.find_element(
-            by=By.CLASS_NAME, value='public-DraftStyleDefault-block.public-DraftStyleDefault-ltr')
+            by=by.CLASS_NAME, value='public-DraftStyleDefault-block.public-DraftStyleDefault-ltr')
         i = randint(0, len(messages)-1)
         print('\n', i, '\n', messages[i])
         sleep(3)
         reply_in.send_keys(messages[i])
         sleep(2)
-        reply_in.send_keys(Keys.ENTER)
-        reply = driver.find_elements(by=By.TAG_NAME, value='span')
+        reply_in.send_keys(keys.ENTER)
+        reply = driver.find_elements(by=by.TAG_NAME, value='span')
         for r in reply:
             if r.text == 'Reply':
                 r.click()

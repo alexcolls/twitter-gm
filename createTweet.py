@@ -26,13 +26,14 @@ def createTweet(_prompts=prompts, _api_key=key.apik):
     completion = openai.Completion.create(
         engine=model_engine,
         prompt=chatGPTtxt +
-        '\n With the previous text, add 3 emojis at the beggining of the main sentences',
+        '\n With the previous text, add emojis at the beggining of the main 3 sentences giving two spaces',
         max_tokens=1024,
         n=1,
         stop=None,
         temperature=0.5,
     )
     textEmojis = completion.choices[0].text
+    print(textEmojis)
     # generate img
     j = randint(0, len(_prompts.images)-1)
     stableDif = openai.Image.create(
