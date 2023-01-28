@@ -1,7 +1,7 @@
 from time import sleep
 from random import randint
-from chromeDriver import driver, keys, by
-from login import log_in
+from src.chromeDriver import driver, keys, by
+from src.login import log_in
 
 log_in()
 sleep(3)

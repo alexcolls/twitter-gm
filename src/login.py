@@ -1,7 +1,6 @@
 from time import sleep
 from key import key
-from chromeDriver import driver, keys
-
+from src.chromeDriver import driver, keys, by
 
 def log_in(user=key.user, pasw=key.pasw):
     driver.get('https://www.twitter.com/i/flow/login')
