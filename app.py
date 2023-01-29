@@ -3,6 +3,7 @@ from src.login import log_in
 from src.getTweets import get_tweets
 from src.createTweet import create_tweet
 from src.chromeDriver import driver
+
 run = True
 log_in()
 sleep(2)

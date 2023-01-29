@@ -8,7 +8,7 @@ import prompts
 def create_tweet(_prompts=prompts.prompts, _api_key=key.apik, _image=True, _print=True, _model='text-davinci-003', _max_letters=160):
     try:
         openai.api_key = _api_key
-        i = randint(0, len(_prompts))
+        i = randint(0, len(_prompts) - 1)
         prompt = _prompts[i]
         if (len(prompt) < _max_letters*0.1):
             j = randint(0, len(messages))
@@ -38,11 +38,21 @@ def create_tweet(_prompts=prompts.prompts, _api_key=key.apik, _image=True, _prin
         textEmojis = completion.choices[0].text
         if (_print):
             print(textEmojis)
+        # generate Dall-e prompt
+        img_prompt = 'Describe the following text as an image ' + chatGPTtxt
+        completion = openai.Completion.create(
+            engine=_model,
+            prompt=img_prompt,
+            max_tokens=1024,
+            n=1,
+            stop=None,
+            temperature=0.5,
+        )
         # generate img if _image=True <default>
         img = ''
         if (_image):
             stableDif = openai.Image.create(
-                prompt=_prompts[i],
+                prompt=img_prompt,
                 n=1,
                 size="256x256",
             )
@@ -52,8 +62,8 @@ def create_tweet(_prompts=prompts.prompts, _api_key=key.apik, _image=True, _prin
             'img': img,
         }
         if (_print):
-            print(ret)
+            print('\n', ret)
         return ret
     except:
-        j = randint(0, len(messages))
+        j = randint(0, len(messages) - 1)
         return 'GM ' + messages[j]
