@@ -96,7 +96,6 @@ def create_tweet(_prompts=prompts.prompts, _api_key=key.apik, _image=True, _prin
             'text': textEmojis,
             'img': img,
         }
-        sleep(_sleep)
         if (_print):
             print('\n', 'createTweet() return: ', ret)
         return ret
