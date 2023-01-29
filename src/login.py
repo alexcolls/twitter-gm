@@ -1,6 +1,6 @@
-from time import sleep
-from . import key
+import key
 from src.chromeDriver import driver, keys, by
+from time import sleep
 
 
 def log_in(user=key.user, pasw=key.pasw):
