@@ -1,3 +1,4 @@
+from time import sleep
 from random import randint
 from randoms import messages
 import key
@@ -5,7 +6,7 @@ import openai
 import prompts
 
 
-def create_tweet(_prompts=prompts.prompts, _api_key=key.apik, _image=True, _print=True, _model='text-davinci-003', _max_letters=160):
+def create_tweet(_prompts=prompts.prompts, _api_key=key.apik, _image=True, _print=True, _model='text-davinci-003', _max_letters=160, _sleep=3):
     try:
         openai.api_key = _api_key
         i = randint(0, len(_prompts) - 1)
@@ -23,6 +24,7 @@ def create_tweet(_prompts=prompts.prompts, _api_key=key.apik, _image=True, _prin
             temperature=0.5,
         )
         chatGPTtxt = completion.choices[0].text
+        sleep(_sleep)
         if (_print):
             print('\n', 'ChatGPT answer: ', chatGPTtxt)
         # add emojis to answer
@@ -36,6 +38,7 @@ def create_tweet(_prompts=prompts.prompts, _api_key=key.apik, _image=True, _prin
             temperature=0.5,
         )
         textEmojis = completion.choices[0].text
+        sleep(_sleep)
         if (_print):
             print('\n', 'Answer with emojis: ', textEmojis)
         # generate topic from tweet
@@ -49,10 +52,11 @@ def create_tweet(_prompts=prompts.prompts, _api_key=key.apik, _image=True, _prin
             temperature=0.5,
         )
         topic = completion.choices[0].text
+        sleep(_sleep)
         if (_print):
             print('\n', 'The topic is: ', topic)
         # generate Dall-e prompt
-        img_prompt = 'Create an image about this topic: ' + topic
+        img_prompt = 'Create a realistic image about this topic: ' + topic
         completion = openai.Completion.create(
             engine=_model,
             prompt=img_prompt,
@@ -61,6 +65,7 @@ def create_tweet(_prompts=prompts.prompts, _api_key=key.apik, _image=True, _prin
             stop=None,
             temperature=0.5,
         )
+        sleep(_sleep)
         if (_print):
             print('\n', 'Dall-e prompt: ', img_prompt)
         # generate img if _image=True <default>
@@ -69,7 +74,7 @@ def create_tweet(_prompts=prompts.prompts, _api_key=key.apik, _image=True, _prin
             stableDif = openai.Image.create(
                 prompt=img_prompt,
                 n=1,
-                size="666x666",
+                size="246x250",
             )
             img = stableDif["data"][0]["url"]
         ret = {
