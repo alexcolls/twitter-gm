@@ -1,10 +1,11 @@
 from src.chromeDriver import driver, by
 
 tweetObj = {
-    'id'
+    'id': 'selenium class',
+    'type': 'tweet',  # tweet type - line 27 to 44
     'user': str,
     'name': str,
-    'tweet': str,
+    'tweet': str,  # text content
     'likes': int,
     'retweets': int,
     'comments': int,
@@ -21,7 +22,7 @@ def get_tweets(_driver=driver):
             text = tweetRaw.text
             textArr = text.split('\n')
             ln = 70  # first characters of the tweet
-            type_ = ''  # tweet type
+            type_ = 'tweet'  # tweet type
             i = 0
             if (text[:ln].__contains__('liked')):
                 i += 1
