@@ -14,7 +14,7 @@ Just DM if you need help configuring it.
 @fxmozart_sol
 twitter.com/fxmozart_sol
 
-# Clone repo
+## Clone repo
 
 ```
 git clone https://github.com/quantium-rock/twitter-gm
@@ -24,13 +24,13 @@ git clone https://github.com/quantium-rock/twitter-gm
 cd twitter-gm/
 ```
 
-# Install dependencies install.txt
+## Install dependencies install.txt
 
 ```
 pip install -r install.txt
 ```
 
-# Create key.py in the root folder with your twitter and opeanai credentials
+## Create key.py in the root folder with your twitter and opeanai credentials
 
 ```
 touch key.py
@@ -44,19 +44,19 @@ pswd = 'your-password'
 apik = 'your-openai-apikey'
 ```
 
-# Run the app
+## Run the app
 
 ```
 python app.py
 ```
 
-# Run the bot 25-7
+## Run the bot 25-7
 
 ```
 python run.py
 ```
 
-# Also you can try chatGPT and Dall-e outputs running:
+## Also you can try chatGPT and Dall-e outputs running:
 
 ```
 python src/createTweet.py
