@@ -14,10 +14,12 @@ while run:
         driver.refresh()
         sleep(5)
         tweets = get_tweets()
-        prompts = []
-        for tweet in tweets:
-            tweet.ans = create_tweet(tweet.tweet)
         print(tweets)
+        # for tweet in tweets:
+        #     print(tweet.tweet)
+        #     ans = create_tweet(tweet.tweet)
+        #     print(ans)
+        run = False
         break
     except:
         sleep(5)

@@ -4,16 +4,14 @@ import openai
 import prompts
 
 
-def create_tweet(_prompts=prompts, _api_key=key.apik):
+def create_tweet(_prompts=prompts, _api_key=key.apik, _model='text-davinci-003'):
     openai.api_key = _api_key
-    # select model
-    model_engine = "text-davinci-003"
     i = randint(0, len(_prompts.prompts)-1)
     prompt = _prompts.prompts[i]
     print(prompt)
     # generate text
     completion = openai.Completion.create(
-        engine=model_engine,
+        engine=_model,
         prompt=prompt + ' less than 120 letters',
         max_tokens=1024,
         n=1,
@@ -46,7 +44,5 @@ def create_tweet(_prompts=prompts, _api_key=key.apik):
         'text': textEmojis,
         'img': img,
     }
+    print(ret)
     return ret
-
-
-print('\n\n', createTweet())
