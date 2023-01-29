@@ -25,6 +25,8 @@ cd twitter-gm/
 
 ## Install dependencies install.txt
 
+Make sure that you have installed python3 and pip3 and included in your OS PATH environment variables. You may need to use 'python3' and 'pip3' instead.
+
 ```
 pip install -r install.txt
 ```
