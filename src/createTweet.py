@@ -60,14 +60,14 @@ def create_tweet(_prompts=prompts.prompts, _api_key=key.apik, _image=True, _prin
         )
         topic = completion.choices[0].text
         try:
-            topic = topic.replace('The topic of this text is ', '')
+            topic = topic.replace('The topic of this text is', ' ')
         except:
             pass
         sleep(_sleep)
         if (_print):
-            print('\n', 'The topic is: ', topic)
+            print('\n', 'The topic is: ' + topic)
         # generate Dall-e prompt
-        img_prompt = 'Describe a realistic image about this topic: ' + topic
+        img_prompt = 'Describe a realistic image about ' + topic
         if (_print):
             print('\n\nSTEP 4 - Generative image prompt:\n', img_prompt)
         completion = openai.Completion.create(
