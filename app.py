@@ -19,7 +19,7 @@ while run:
         j = 0
         for tw in tweets:
             j += 1
-            print('\n\n', 'Tweet number: ', j)
+            print('\n\n', 'Tweet: ', j)
             print('\n', tw)
             print('\n', tw['tweet'])
             ans = create_tweet([tw['tweet']])
