@@ -18,16 +18,29 @@ def get_tweets():
     for tweetRaw in tweetsRaw:
         text = tweetRaw.text
         textArr = text.split('\n')
+        i = 0
+        first = 50  # characters of tweet
+        if (text[:first].__contains__('liked')):
+            i += 1
+        elif (text[:first].__contains__('follow')):
+            i += 1
+        elif (text[:first].__contains__('Retweeted')):
+            i += 1
+        elif (text[:first].__contains__('replied')):
+            i += 1
+        elif (text[:first].__contains__('See more')):
+            i += 1
         twObj = {
             'id': tweetRaw,
-            'user': textArr[1],
-            'name': textArr[0],
-            'tweet': textArr[4],
-            'comments': textArr[5],
-            'retweets': textArr[6],
-            'likes': textArr[7],
-            'views': textArr[8],
-            'promoted': True if text.__contains__('Promoted') else False,
+            'name': textArr[0+i],
+            'user': textArr[1+i],
+            'tweet': textArr[4+i],
+            'comments': textArr[5+i],
+            'retweets': textArr[6+i],
+            'likes': textArr[7+i],
+            'views': textArr[8+i],
+            'promoted': True if text[-20].__contains__('Promoted') else False,
         }
         tweets.append(twObj)
+        print('\n', twObj, '\n')
     return tweets
