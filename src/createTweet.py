@@ -82,3 +82,7 @@ def create_tweet(_prompts=prompts.prompts, _api_key=key.apik, _image=True, _prin
     except:
         j = randint(0, len(messages) - 1)
         return 'GM ' + messages[j]
+
+
+if __name__ == '__main__':
+    print(create_tweet())

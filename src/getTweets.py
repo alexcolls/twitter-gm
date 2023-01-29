@@ -63,3 +63,9 @@ def get_tweets(_driver=driver):
             continue
 
     return tweets
+
+
+if __name__ == '__main__':
+    tweets = get_tweets()
+    for tweet in tweets:
+        print('\n', tweet)
