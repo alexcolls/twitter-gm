@@ -103,7 +103,7 @@ def create_tweet(_prompts=prompts.prompts, _api_key=key.apik, _image=True, _prin
     except:
         print('\nERROR: openai api failed. \n1. Check  that apik in key.py is correct. \n2. Check also that prompt sent to chatGPT and/or Dall-E is correct.\n> Returning random message from randoms.py\n')
         ret = {'text': textEmojis, 'img': ''}
-        if (len(textEmojis) == 0):
+        if (len(textEmojis) == 0 or textEmojis.__contains__('error')):
             j = randint(0, len(messages) - 1)
             ret['text'] = 'GM ' + messages[j]
         return ret
