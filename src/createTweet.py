@@ -4,7 +4,7 @@ import openai
 import prompts
 
 
-def create_tweet(_prompts=prompts.prompts, _api_key=key.apik, _model='text-davinci-003', _max_letters=160):
+def create_tweet(_prompts=prompts.prompts, _api_key=key.apik, _image=True, _model='text-davinci-003', _max_letters=160):
     try:
         openai.api_key = _api_key
         i = randint(0, len(_prompts))
@@ -36,12 +36,14 @@ def create_tweet(_prompts=prompts.prompts, _api_key=key.apik, _model='text-davin
         print(textEmojis)
         # generate img
         # j = randint(0, len(_prompts.images)-1)
-        stableDif = openai.Image.create(
-            prompt=_prompts[i],
-            n=1,
-            size="256x256",
-        )
-        img = stableDif["data"][0]["url"]
+        img = ''
+        if (_image):
+            stableDif = openai.Image.create(
+                prompt=_prompts[i],
+                n=1,
+                size="256x256",
+            )
+            img = stableDif["data"][0]["url"]
         ret = {
             'text': textEmojis,
             'img': img,
