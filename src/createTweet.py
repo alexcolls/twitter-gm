@@ -34,8 +34,7 @@ def create_tweet(_prompts=prompts.prompts, _api_key=key.apik, _image=True, _mode
         )
         textEmojis = completion.choices[0].text
         print(textEmojis)
-        # generate img
-        # j = randint(0, len(_prompts.images)-1)
+        # generate img if _image=True <default>
         img = ''
         if (_image):
             stableDif = openai.Image.create(
