@@ -57,7 +57,7 @@ python app.py
 python run.py
 ```
 
-## Also you can try chatGPT and Dall-e outputs running:
+## Also you can try chatGPT and Dall-E outputs running:
 
 ```
 python src/createTweet.py

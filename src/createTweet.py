@@ -9,12 +9,15 @@ import prompts
 def create_tweet(_prompts=prompts.prompts, _api_key=key.apik, _image=True, _print=True, _model='text-davinci-003', _max_letters=160, _sleep=3):
     try:
         openai.api_key = _api_key
+        # get random propmt from _prompts[]
         i = randint(0, len(_prompts) - 1)
         prompt = _prompts[i]
         if (len(prompt) < _max_letters*0.1):
             j = randint(0, len(messages))
             return messages[j]
         # generate text from chatGPT
+        if (_print):
+            print('\n\nSTEP 1 - Get answer from:\n', prompt)
         completion = openai.Completion.create(
             engine=_model,
             prompt=prompt+'\n less than '+str(_max_letters)+' letters',
@@ -26,8 +29,10 @@ def create_tweet(_prompts=prompts.prompts, _api_key=key.apik, _image=True, _prin
         chatGPTtxt = completion.choices[0].text
         sleep(_sleep)
         if (_print):
-            print('\n', 'ChatGPT answer: ', chatGPTtxt)
+            print('\n\n', 'ChatGPT answer:\n', chatGPTtxt)
         # add emojis to answer
+        if (_print):
+            print('\n\nSTEP 2 - Add emojis to answer:')
         completion = openai.Completion.create(
             engine=_model,
             prompt=chatGPTtxt +
@@ -42,6 +47,8 @@ def create_tweet(_prompts=prompts.prompts, _api_key=key.apik, _image=True, _prin
         if (_print):
             print('\n', 'Answer with emojis: ', textEmojis)
         # generate topic from tweet
+        if (_print):
+            print('\n\nSTEP 3 - Get tweet topic:')
         topic_prompt = 'What is the topic of this text? \n' + chatGPTtxt
         completion = openai.Completion.create(
             engine=_model,
@@ -56,7 +63,9 @@ def create_tweet(_prompts=prompts.prompts, _api_key=key.apik, _image=True, _prin
         if (_print):
             print('\n', 'The topic is: ', topic)
         # generate Dall-e prompt
-        img_prompt = 'Create a realistic image about this topic: ' + topic
+        img_prompt = 'Describe a realistic image about this topic: ' + topic
+        if (_print):
+            print('\n\nSTEP 4 - Generative image prompt:\n', img_prompt)
         completion = openai.Completion.create(
             engine=_model,
             prompt=img_prompt,
@@ -67,10 +76,12 @@ def create_tweet(_prompts=prompts.prompts, _api_key=key.apik, _image=True, _prin
         )
         sleep(_sleep)
         if (_print):
-            print('\n', 'Dall-e prompt: ', img_prompt)
+            print('\n', 'Dall-E prompt: ', img_prompt)
         # generate img if _image=True <default>
-        img = ''
         if (_image):
+            if (_print):
+                print('\n\nSTEP 5 - Generating image from Dall-E...')
+            img = ''
             stableDif = openai.Image.create(
                 prompt=img_prompt,
                 n=1,
@@ -81,6 +92,7 @@ def create_tweet(_prompts=prompts.prompts, _api_key=key.apik, _image=True, _prin
             'text': textEmojis,
             'img': img,
         }
+        sleep(_sleep)
         if (_print):
             print('\n', 'createTweet() return: ', ret)
         return ret
