@@ -14,7 +14,7 @@ tweetObj = {
 }
 
 
-def get_tweets(_driver=driver, _print=False, _ln=70):
+def get_tweets(_print=False, _driver=driver, _ln=70):
     tweetsRaw = _driver.find_elements(by=by.TAG_NAME, value='article')
     tweets = []
     for tweetRaw in tweetsRaw:
@@ -32,6 +32,9 @@ def get_tweets(_driver=driver, _print=False, _ln=70):
             elif (text[:_ln].__contains__('replied')):
                 i += 1
                 type_ = 'replied'
+            elif (text[:_ln].__contains__('new replies')):
+                i += 1
+                type_ = 'new-replies'
             elif (text[:_ln].__contains__('Retweeted')):
                 i += 1
                 type_ = 'retweet'
