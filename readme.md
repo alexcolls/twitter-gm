@@ -10,9 +10,8 @@ A Twitter assistant bot, using Selenium (no Twitter api required), that allows y
 
 To use this program you need to open an account in twitter.com and open.com and add your credentials to your key.py file, as explained below.
 
-Just DM if you need help configuring it.
-@fxmozart_sol
-twitter.com/fxmozart_sol
+Just DM if you need help configuring it:
+https://twitter.com/@fxmozart_sol
 
 ## Clone repo
 
