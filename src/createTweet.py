@@ -64,7 +64,7 @@ def create_tweet(_prompts=prompts.prompts, _api_key=key.apik, _image=True, _prin
             'img': img,
         }
         if (_print):
-            print('\n', 'createTweet return: ', ret)
+            print('\n', 'createTweet() return: ', ret)
         return ret
     except:
         j = randint(0, len(messages) - 1)
