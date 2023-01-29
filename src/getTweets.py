@@ -44,7 +44,7 @@ def get_tweets(_driver=driver):
                 type_ = 'replying'
             j = 0
             if (text[:ln].__contains__('· ')):
-                j += 3
+                j += 4
             twObj = {
                 'id': tweetRaw,
                 'type': type_,
