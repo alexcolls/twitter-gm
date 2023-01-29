@@ -12,7 +12,7 @@ def create_tweet(_prompts=prompts.prompts, _api_key=key.apik, _model='text-davin
         # generate text
         completion = openai.Completion.create(
             engine=_model,
-            prompt=prompt + ' less than '+_max_letters+' letters',
+            prompt=prompt+' less than '+str(_max_letters)+' letters',
             max_tokens=1024,
             n=1,
             stop=None,
