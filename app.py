@@ -9,20 +9,23 @@ log_in()
 sleep(2)
 i = 0
 while run:
-    print('\nRun: ', i+1)
+    i += 1
+    print('\nRun: ', i)
     try:
-        i += 1
         driver.refresh()
         sleep(5)
         tweets = get_tweets()
         # print(tweets)
+        j = 0
         for tw in tweets:
-            print('\n\n', tw)
+            j += 1
+            print('\n\n', 'Tweet number: ', j)
+            print('\n', tw)
             print('\n', tw['tweet'])
             ans = create_tweet([tw['tweet']])
             print('\n', ans)
-            sleep(22)
-        sleep(60)
+            sleep(10)
+        sleep(20)
         run = False
         break
     except:
