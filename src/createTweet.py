@@ -24,7 +24,7 @@ def create_tweet(_prompts=prompts.prompts, _api_key=key.apik, _image=True, _prin
         )
         chatGPTtxt = completion.choices[0].text
         if (_print):
-            print(chatGPTtxt)
+            print('\n', 'ChatGPT answer', chatGPTtxt)
         # add emojis to answer
         completion = openai.Completion.create(
             engine=_model,
@@ -37,7 +37,7 @@ def create_tweet(_prompts=prompts.prompts, _api_key=key.apik, _image=True, _prin
         )
         textEmojis = completion.choices[0].text
         if (_print):
-            print(textEmojis)
+            print('\n', 'Answer with emojis', textEmojis)
         # generate Dall-e prompt
         img_prompt = 'Describe the following text as an image ' + chatGPTtxt
         completion = openai.Completion.create(
@@ -62,7 +62,7 @@ def create_tweet(_prompts=prompts.prompts, _api_key=key.apik, _image=True, _prin
             'img': img,
         }
         if (_print):
-            print('\n', ret)
+            print('\n', 'createTweet return', ret)
         return ret
     except:
         j = randint(0, len(messages) - 1)
