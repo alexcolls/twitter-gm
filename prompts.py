@@ -1,3 +1,4 @@
+# add your interests:
 prompts = [
     'Talk about NFTs',
     'Talk about Bitcoin',
