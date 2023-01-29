@@ -2,37 +2,10 @@ from time import sleep
 from random import randint
 from src.chromeDriver import driver, keys, by
 from src.login import log_in
+from randoms import messages
 
 log_in()
 sleep(3)
-
-messages = [
-    'Gm',
-    'Gmgmgmgm',
-    'Gm ❤️',
-    'Hi darling',
-    'Gm 👽',
-    'Gmmmm',
-    'whatsup',
-    'congrats',
-    'hello',
-    'cool',
-    '❤️',
-    'hey',
-    'I love you',
-    'God loves you',
-    'respect',
-    'positivity',
-    'productivity',
-    'have a nice day ❤️',
-    '❤️❤️❤️'
-    'be happy',
-    'hi dear',
-    'lfgggg',
-    'LFG 🚀',
-    '🚀',
-    '🚀🚀🚀'
-]
 
 while True:
     try:

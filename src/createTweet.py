@@ -1,4 +1,5 @@
 from random import randint
+from randoms import messages
 import key
 import openai
 import prompts
@@ -10,7 +11,8 @@ def create_tweet(_prompts=prompts.prompts, _api_key=key.apik, _image=True, _prin
         i = randint(0, len(_prompts))
         prompt = _prompts[i]
         if (len(prompt) < _max_letters*0.1):
-            return 'Gmgmgm'
+            j = randint(0, len(messages))
+            return messages[j]
         # generate text from chatGPT
         completion = openai.Completion.create(
             engine=_model,
@@ -53,4 +55,5 @@ def create_tweet(_prompts=prompts.prompts, _api_key=key.apik, _image=True, _prin
             print(ret)
         return ret
     except:
-        return 'GM'
+        j = randint(0, len(messages))
+        return 'GM ' + messages[j]

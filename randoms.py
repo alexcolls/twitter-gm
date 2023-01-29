@@ -1,0 +1,27 @@
+messages = [
+    'Gm',
+    'Gmgmgmgm',
+    'Gm ❤️',
+    'Hi darling',
+    'Gm 👽',
+    'Gmmmm',
+    'whatsup',
+    'congrats',
+    'hello',
+    'cool',
+    '❤️',
+    'hey',
+    'I love you',
+    'God loves you',
+    'respect',
+    'positivity',
+    'productivity',
+    'have a nice day ❤️',
+    '❤️❤️❤️'
+    'be happy',
+    'hi dear',
+    'lfgggg',
+    'LFG 🚀',
+    '🚀',
+    '🚀🚀🚀'
+]
