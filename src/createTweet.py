@@ -9,6 +9,8 @@ def create_tweet(_prompts=prompts.prompts, _api_key=key.apik, _model='text-davin
         openai.api_key = _api_key
         i = randint(0, len(_prompts))
         prompt = _prompts[i]
+        if (len(prompt) < _max_letters*0.1):
+            return 'Gmgmgm'
         # generate text
         completion = openai.Completion.create(
             engine=_model,
