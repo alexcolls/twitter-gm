@@ -1,5 +1,5 @@
-import key
 from random import randint
+import key
 import openai
 import prompts
 
@@ -9,7 +9,6 @@ def create_tweet(_prompts=prompts.prompts, _api_key=key.apik, _model='text-davin
         openai.api_key = _api_key
         i = randint(0, len(_prompts))
         prompt = _prompts[i]
-        print(prompt)
         # generate text
         completion = openai.Completion.create(
             engine=_model,
