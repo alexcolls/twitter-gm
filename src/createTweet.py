@@ -1,4 +1,4 @@
-from key import key
+from . import key
 from random import randint
 import openai
 import prompts
