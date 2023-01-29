@@ -49,7 +49,7 @@ apik = 'your-openai-apikey'
 python app.py
 ```
 
-## Run the bot 25-7
+## Run the bot 24-7
 
 ```
 python run.py
