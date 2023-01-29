@@ -59,6 +59,7 @@ def create_tweet(_prompts=prompts.prompts, _api_key=key.apik, _image=True, _prin
             temperature=0.5,
         )
         topic = completion.choices[0].text
+        topic = topic.replace('The topic of this text is ', '')
         sleep(_sleep)
         if (_print):
             print('\n', 'The topic is: ', topic)
