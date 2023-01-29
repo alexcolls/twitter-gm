@@ -14,7 +14,7 @@ tweetObj = {
 }
 
 
-def get_tweets(_print=False, _driver=driver, _ln=70):
+def get_tweets(_driver=driver, _print=False, _ln=70):
     tweetsRaw = _driver.find_elements(by=by.TAG_NAME, value='article')
     tweets = []
     for tweetRaw in tweetsRaw:
