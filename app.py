@@ -9,7 +9,7 @@ log_in()
 sleep(2)
 i = 0
 while run:
-    print('\nRun: ', i)
+    print('\nRun: ', i+1)
     try:
         i += 1
         driver.refresh()
