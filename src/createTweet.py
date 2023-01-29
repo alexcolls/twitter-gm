@@ -4,14 +4,14 @@ import openai
 import prompts
 
 
-def create_tweet(_prompts=prompts.prompts, _api_key=key.apik, _image=True, _model='text-davinci-003', _max_letters=160):
+def create_tweet(_prompts=prompts.prompts, _api_key=key.apik, _image=True, _print=True, _model='text-davinci-003', _max_letters=160):
     try:
         openai.api_key = _api_key
         i = randint(0, len(_prompts))
         prompt = _prompts[i]
         if (len(prompt) < _max_letters*0.1):
             return 'Gmgmgm'
-        # generate text
+        # generate text from chatGPT
         completion = openai.Completion.create(
             engine=_model,
             prompt=prompt+' less than '+str(_max_letters)+' letters',
@@ -21,8 +21,9 @@ def create_tweet(_prompts=prompts.prompts, _api_key=key.apik, _image=True, _mode
             temperature=0.5,
         )
         chatGPTtxt = completion.choices[0].text
-        print(chatGPTtxt)
-        # add emojis
+        if (_print):
+            print(chatGPTtxt)
+        # add emojis to answer
         completion = openai.Completion.create(
             engine=_model,
             prompt=chatGPTtxt +
@@ -33,7 +34,8 @@ def create_tweet(_prompts=prompts.prompts, _api_key=key.apik, _image=True, _mode
             temperature=0.5,
         )
         textEmojis = completion.choices[0].text
-        print(textEmojis)
+        if (_print):
+            print(textEmojis)
         # generate img if _image=True <default>
         img = ''
         if (_image):
@@ -47,7 +49,8 @@ def create_tweet(_prompts=prompts.prompts, _api_key=key.apik, _image=True, _mode
             'text': textEmojis,
             'img': img,
         }
-        print(ret)
+        if (_print):
+            print(ret)
         return ret
     except:
         return 'GM'
