@@ -16,36 +16,52 @@ twitter.com/fxmozart_sol
 
 # Clone repo
 
-> > git clone https://github.com/quantium-rock/twitter-gm
-> > cd twitter-gm/
+```
+git clone https://github.com/quantium-rock/twitter-gm
+```
+
+```
+cd twitter-gm/
+```
 
 # Install dependencies install.txt
 
-> > pip install -r install.txt
+```
+pip install -r install.txt
+```
 
 # Create key.py in the root folder with your twitter and opeanai credentials
 
-> > touch key.py
+```
+touch key.py
+```
 
 In the key.py add your the following variables:
-"""
+
+```
 user = '@example'
 pswd = 'your-password'
 apik = 'your-openai-apikey'
-"""
+```
 
 # Run the app
 
-> > python app.py
+```
+python app.py
+```
 
 # Run the bot 25-7
 
-> > python run.py
+```
+python run.py
+```
 
-# also you can try chatGPT and DallE outputs running:
+# Also you can try chatGPT and Dall-e outputs running:
 
-> > python src/createTweet.py
+```
+python src/createTweet.py
+```
 
-You can modify prompts.py to get your desired responses
+You can modify prompts.py to get your desired responses.
 
 # More updates comming soon...
