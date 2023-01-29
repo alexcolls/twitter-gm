@@ -14,7 +14,7 @@ while run:
     try:
         driver.refresh()
         sleep(5)
-        tweets = get_tweets(True)
+        tweets = get_tweets(_print=True)
         # print(tweets)
         j = 0
         for tw in tweets:
