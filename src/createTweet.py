@@ -4,7 +4,7 @@ import openai
 import prompts
 
 
-def createTweet(_prompts=prompts, _api_key=key.apik):
+def create_tweet(_prompts=prompts, _api_key=key.apik):
     openai.api_key = _api_key
     # select model
     model_engine = "text-davinci-003"
@@ -35,9 +35,9 @@ def createTweet(_prompts=prompts, _api_key=key.apik):
     textEmojis = completion.choices[0].text
     print(textEmojis)
     # generate img
-    j = randint(0, len(_prompts.images)-1)
+    # j = randint(0, len(_prompts.images)-1)
     stableDif = openai.Image.create(
-        prompt=_prompts.images[j],
+        prompt=_prompts[i],
         n=1,
         size="256x256",
     )
