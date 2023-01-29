@@ -9,9 +9,10 @@ while run:
     try:
         driver.refresh()
         sleep(5)
-        get_tweets()
-        run = False
+        tweets = get_tweets()
+        print(tweets)
+        sleep(25)
     except:
-        sleep(2)
+        sleep(5)
         driver.get('https://www.twitter.com/home')
         continue

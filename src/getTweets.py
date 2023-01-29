@@ -29,5 +29,5 @@ def get_tweets():
             'views': textArr[8],
             'promoted': True if text.__contains__('Promoted') else False,
         }
-        print('\n', twObj, '\n')
         tweets.append(twObj)
+    return tweets
