@@ -4,7 +4,7 @@ import openai
 import prompts
 
 
-def create_tweet(_prompts=prompts.prompts, _api_key=key.apik, _model='text-davinci-003'):
+def create_tweet(_prompts=prompts.prompts, _api_key=key.apik, _model='text-davinci-003', _max_letters=160):
     try:
         openai.api_key = _api_key
         i = randint(0, len(_prompts))
@@ -13,7 +13,7 @@ def create_tweet(_prompts=prompts.prompts, _api_key=key.apik, _model='text-davin
         # generate text
         completion = openai.Completion.create(
             engine=_model,
-            prompt=prompt + ' less than 120 letters',
+            prompt=prompt + ' less than '+_max_letters+' letters',
             max_tokens=1024,
             n=1,
             stop=None,
