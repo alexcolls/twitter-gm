@@ -14,14 +14,17 @@ while run:
         driver.refresh()
         sleep(5)
         tweets = get_tweets()
-        print(tweets)
-        # for tweet in tweets:
-        #     print(tweet.tweet)
-        #     ans = create_tweet(tweet.tweet)
-        #     print(ans)
+        # print(tweets)
+        for tw in tweets:
+            print('\n\n', tw)
+            print('\n', tw['tweet'])
+            ans = create_tweet([tw['tweet']])
+            print('\n', ans)
+            sleep(22)
+        sleep(60)
         run = False
         break
     except:
-        sleep(5)
+        sleep(60)
         driver.get('https://www.twitter.com/home')
         continue
