@@ -38,9 +38,9 @@ touch key.py
 In the key.py add your the following variables:
 
 ```
-user = '@example'
-pswd = 'your-password'
-apik = 'your-openai-apikey'
+user = '@example' # your twitter username or email
+pswd = 'your-password' # your twitter password
+apik = 'your-openai-apikey' # your openai.com api key
 ```
 
 ## Run the app
