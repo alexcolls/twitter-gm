@@ -26,9 +26,8 @@ while run:
             print('\n', ans)
             sleep(10)
         sleep(20)
-        run = False
-        break
     except:
         sleep(60)
+        print('ERROR at Run and Tweet: ', i, j)
         driver.get('https://www.twitter.com/home')
         continue
