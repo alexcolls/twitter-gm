@@ -14,36 +14,35 @@ tweetObj = {
 }
 
 
-def get_tweets(_driver=driver):
+def get_tweets(_driver=driver, _print=False, _ln=70):
     tweetsRaw = _driver.find_elements(by=by.TAG_NAME, value='article')
     tweets = []
     for tweetRaw in tweetsRaw:
         try:
             text = tweetRaw.text
             textArr = text.split('\n')
-            ln = 70  # first characters of the tweet
-            type_ = 'tweet'  # tweet type
+            type_ = 'tweet'
             i = 0
-            if (text[:ln].__contains__('liked')):
+            if (text[:_ln].__contains__('liked')):
                 i += 1
                 type_ = 'liked'
-            elif (text[:ln].__contains__('follow')):
+            elif (text[:_ln].__contains__('follow')):
                 i += 1
                 type_ = 'follow'
-            elif (text[:ln].__contains__('replied')):
+            elif (text[:_ln].__contains__('replied')):
                 i += 1
                 type_ = 'replied'
-            elif (text[:ln].__contains__('Retweeted')):
+            elif (text[:_ln].__contains__('Retweeted')):
                 i += 1
                 type_ = 'retweet'
-            elif (text[:ln].__contains__('See more')):
+            elif (text[:_ln].__contains__('See more')):
                 i += 1
                 type_ = 'see-more'
-            elif (text[:ln].__contains__('Replying to')):
+            elif (text[:_ln].__contains__('Replying to')):
                 i += 2
                 type_ = 'replying'
             j = 0
-            if (text[:ln].__contains__('· ')):
+            if (text[:_ln].__contains__('· ')):
                 j += 4
             twObj = {
                 'id': tweetRaw,
@@ -58,7 +57,8 @@ def get_tweets(_driver=driver):
                 'promoted': True if text[-20].__contains__('Promoted') else False,
             }
             tweets.append(twObj)
-            # print('\n', twObj, '\n')
+            if (_print):
+                print('\n', twObj, '\n')
         except:
             continue
 
