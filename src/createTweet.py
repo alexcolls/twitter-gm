@@ -29,7 +29,7 @@ def create_tweet(_prompts=prompts.prompts, _api_key=key.apik, _image=True, _prin
         completion = openai.Completion.create(
             engine=_model,
             prompt=chatGPTtxt +
-            '\n With the previous text, add emojis at the beggining of the main 3 sentences giving two spaces',
+            '\n With the previous text, add emojis at the beggining of the main sentences giving spaces',
             max_tokens=1024,
             n=1,
             stop=None,
@@ -39,7 +39,7 @@ def create_tweet(_prompts=prompts.prompts, _api_key=key.apik, _image=True, _prin
         if (_print):
             print('\n', 'Answer with emojis: ', textEmojis)
         # generate Dall-e prompt
-        img_prompt = 'Describe the following text as an image ' + chatGPTtxt
+        img_prompt = 'Convert the following text to a prompt for Dall-E' + chatGPTtxt
         completion = openai.Completion.create(
             engine=_model,
             prompt=img_prompt,
